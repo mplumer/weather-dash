@@ -1,19 +1,3 @@
-// fetch('http://api.openweathermap.org/data/2.5/forecast?id=524901&APPID=43fd1cdd770e5cf56daf2f9d5cdc1037')
-// .then(response => response.json())
-// .then(data => console.log(data));
-
-// fetch('api.openweathermap.org/data/2.5/weather?q={city name}&appid=524901&APPID=43fd1cdd770e5cf56daf2f9d5cdc1037')
-// .then(response => response.json())
-// .then(data => console.log(data));
-
-// DISPLAY CURRENT DATE IN HEADER
-// var showTime = function () {
-//     $("#year").text(moment().format('YYYY'));
-//     $("#date").text(moment().format('dddd, MM/DD/YYYY'));
-//     $("#time").text(moment().format('hh:mm a'));
-// }
-// setInterval(showTime, 1000); 
-
 var searchFormEl = document.querySelector("#form-input");
 var cityInputEl = document.querySelector("#searchTerm");
 var cityDisplayName = document.querySelector("#city");
@@ -25,8 +9,8 @@ var uvIndex = document.querySelector("#uv");
 var currentDate = document.querySelector("#date");
 var lat = "lat";
 var fiveDay = {
-    date: "05/24/1993",
-    icon: "none",
+    date: "11/05/1955",
+    icon: "elvis",
     temp: "980",
     humidity: "500"
 }
@@ -69,6 +53,7 @@ var citySearch = function (city) {
 
 var displayWeather = function (data, city) {
     cityDisplayName.textContent = city;
+    // GET ICON
     iconEl.setAttribute("src", "http://openweathermap.org/img/wn/" + data.weather[0].icon + "@2x.png");
     temp.textContent = "Temperature: " + data.main.temp + " ℉";
     humidity.textContent = "Humidity: " + data.main.humidity + "%";
@@ -120,29 +105,12 @@ var fiveDayCompiler = function (data) {
 var displayFiveDay = function (data) {
     console.log(data);
 
-
     for (var i = 0; i < data.length; i++) {
 
-        // console.log(date.toLocaleDateString('en-US'));
-
         var day = document.getElementById("day" + i);
-        day.innerHTML = '<h5 class="card-title">' + data[i].date + '</h5><span>' + data[i].icon + '</span><p>Temp: ' + data[i].temp + ' ℉</p><p>Humidity: ' + data[i].humidity + '%</p>';
+        day.innerHTML = '<h4 class="card-title">' + data[i].date + '</h4><img id="icon' + i + '"class="col-10" alt="weather-conditions-icon" src="http://openweathermap.org/img/wn/' + data[i].icon + '@2x.png"></img><p>Temp: ' + data[i].temp + ' ℉</p><p>Humidity: ' + data[i].humidity + '%</p>';
+
     }
-}
-
-var formatDates = function (date) { }
-
-
-
-
+};
 
 searchFormEl.addEventListener("submit", formSubmitHandler);
-// showTime()
-
-
-
-// http://api.openweathermap.org/data/2.5/weather?q=London&appid=43fd1cdd770e5cf56daf2f9d5cdc1037
-
-// http://openweathermap.org/img/wn/" + value + "@2x.png
-
-// "http://api.openweathermap.org/data/2.5/uvi?lat=30.27&lon=-97.74&appid=43fd1cdd770e5cf56daf2f9d5cdc1037"

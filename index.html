@@ -24,9 +24,10 @@
 
             <section class="card">
                 <form id="form-input" class="card-body">
-                    <label for="searchTerm" class="form-label">Search for a City:</label>
+                    <label for="searchTerm" class="h4 form-label">Search for a City:</label>
                     <input id="searchTerm" name="searchTerm" class="input" type="text" autofocus="true">
-                    <button type="submit" class="btn"><span class="oi oi-magnifying-glass"></span></button>
+                    <button type="submit" class="btn bg-primary text-white"><span
+                            class="oi oi-magnifying-glass"></span></button>
                 </form>
             </section>
 
@@ -46,57 +47,72 @@
         </div>
 
         <div id="forecast-wrapper" class="col-12 col-md-9">
-            <section id="forecast" class="forecast card border">
-                <div id="city" class="forecast-data">
 
-                </div><span id="date"></span>
-                <div><img id="icon"></img></div>
+            <div class="row">
+                <div class="col-6">
+                    <section id="forecast" class="forecast card">
+                        <article class="row card-body">
+                            <div class="col-6">
 
-                <div id="temp" class="forecast-data">Temperature:</div>
-                <div id="humidity" class="forecast-data">Humidity:</div>
-                <div id="wind" class="forecast-data">Wind Speed:</div>
-                <div id="uv" class="forecast-data">UV Index</div>
-            </section>
+                                <h1 id="city" class="card-title forecast-data">City</h1>
+                                <h4 id="date" class="card-subtitle">Date</h4>
+                                <br>
+                                <div class="data">
+                                    <div id="temp" class="forecast-data">Temperature:</div>
+                                    <div id="humidity" class="forecast-data">Humidity:</div>
+                                    <div id="wind" class="forecast-data">Wind Speed:</div>
+                                    <div id="uv" class="forecast-data">UV Index</div>
+                                </div>
+
+                            </div>
+                            <div class="col-6"><img id="icon" class="col-12" alt="weather-conditions-icon"></img></div>
+
+                        </article>
+
+                    </section>
+                </div>
+            </div>
+
             <section id="fiveDay" class="mt-2">
-                <h4 class="">5-Day Forecast</h4>
+                <h3 class="">5-Day Forecast:</h3>
 
                 <article class="row justify-content-between">
-                    <div id="day1" class="future bg-primary text-white card col-2 ml-3">
-                        <div class="card-body">
-                            <h5>DATE</h5>
-                            <span>icon</span>
+                    <div class="future bg-primary text-white card col-2 ml-3">
+                        <div id="day0" class="card-body">
+                            <h3 class="card-title">DATE</h3>
+                            <span class="card-text">icon</span>
                             <p>Temp: </p>
                             <p>Humidity: </p>
                         </div>
                     </div>
-                    <div id="day2" class="future bg-primary text-white card col-2">
-                        <div class="card-body">
-                            <h5>DATE</h5>
-                            <span>icon</span>
+                    <div class="future bg-primary text-white card col-2">
+                        <div id="day1" class="card-body">
+                            <h3 class="card-title">DATE</h3>
+                            <span class="card-text">icon</span>
                             <p>Temp: </p>
                             <p>Humidity: </p>
                         </div>
                     </div>
-                    <div id="day3" class="future bg-primary text-white card col-2">
-                        <div class="card-body">
-                            <h5>DATE</h5>
-                            <span>icon</span>
+                    <div class="future bg-primary text-white card col-2">
+                        <div id="day2" class="card-body">
+                            <h3 class="card-title">DATE</h3>
+                            <span class="card-text">icon</span>
                             <p>Temp: </p>
                             <p>Humidity: </p>
                         </div>
                     </div>
-                    <div id="day4" class="future bg-primary text-white card col-2">
-                        <div class="card-body">
-                            <h5>DATE</h5>
-                            <span>icon</span>
+                    <div class="future bg-primary text-white card col-2">
+                        <div id="day3" class="card-body">
+                            <h3 class="card-title">DATE</h3>
+                            <span class="card-text">icon</span>
                             <p>Temp: </p>
                             <p>Humidity: </p>
                         </div>
                     </div>
-                    <div id="day5" class="future bg-primary text-white card col-2">
-                        <div class="card-body">
-                            <h5>DATE</h5>
-                            <span>icon</span>
+                    <div class="future bg-primary text-white card col-2">
+                        <div id="day4" class="card-body">
+                            <h3 class="card-title">DATE</h3>
+                            <span class="card-text">icon</span>
                             <p>Temp: </p>
                             <p>Humidity: </p>
                         </div>

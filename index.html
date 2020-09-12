@@ -9,49 +9,95 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/themes/base/jquery-ui.min.css">
     <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/open-iconic/1.1.1/font/css/open-iconic-bootstrap.min.css" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="./assets/css/style.css">
-    <title>Weather Dash</title>
+    <title>Weather Dashboard</title>
 </head>
 
 <body>
     <header>
-        <h1 class="header text-center bg-dark text-light">Weather Dashboard</h1>
+        <h1 class="header text-center bg-dark text-light p-3">Weather Dashboard</h1>
     </header>
     <main class="container-fluid row d-flex">
-        <div id="search-wrapper" class="col-3">
-            <label for="searchTerm">Search for a City:</label>
-            <input id="searchTerm" class="input" type="text">
-            <span><button><span class="oi oi-magnifying-glass"></span></button></span>
 
-            <section id="searchHx" class="searchHx">
-                <ul id="searchList" class="searchList">
-                    <li class="list-item border">Search history</li>
-                    <li class="list-item border">displayed here</li>
-                    <li class="list-item border"></li>
-                    <li class="list-item border"></li>
-                    <li class="list-item border"></li>
-                    <li class="list-item border"></li>
-                    <li class="list-item border"></li>
-                    <li class="list-item border"></li>
+        <div id="search-wrapper" class="col 12 col-md-3">
+
+            <section class="card">
+                <form id="form-input" class="card-body">
+                    <label for="searchTerm" class="form-label">Search for a City:</label>
+                    <input id="searchTerm" name="searchTerm" class="input" type="text" autofocus="true">
+                    <button type="submit" class="btn"><span class="oi oi-magnifying-glass"></span></button>
+                </form>
+            </section>
+
+            <section id="searchHx" class="card searchHx mt-3">
+                <ul id="searchList" class="searchList list-group">
+                    <li class="list-item list-group-item list-group-item-action border p-3">Search history</li>
+                    <li class="list-item list-group-item list-group-item-action border p-3">displayed here</li>
+                    <li class="list-item list-group-item list-group-item-action border p-3"></li>
+                    <li class="list-item list-group-item list-group-item-action border p-3"></li>
+                    <li class="list-item list-group-item list-group-item-action border p-3"></li>
+                    <li class="list-item list-group-item list-group-item-action border p-3"></li>
+                    <li class="list-item list-group-item list-group-item-action border p-3"></li>
+                    <li class="list-item list-group-item list-group-item-action border p-3"></li>
                 </ul>
             </section>
+
         </div>
 
-        <div id="forecast-wrapper" class="col-9 border">
-            <section id="forecast" class="forecast">
+        <div id="forecast-wrapper" class="col-12 col-md-9">
+            <section id="forecast" class="forecast card border">
                 <div id="city" class="forecast-data">City</div>
                 <div id="temp" class="forecast-data">Temperature:</div>
                 <div id="humidity" class="forecast-data">Humidity:</div>
                 <div id="wind" class="forecast-data">Wind Speed:</div>
                 <div id="uv" class="forecast-data">UV Index</div>
             </section>
-            <section id="fiveDay">
-                <h4>5-Day Forecast</h4>
-                <div id="day1" class="future"></div>
-                <div id="day2" class="future"></div>
-                <div id="day3" class="future"></div>
-                <div id="day4" class="future"></div>
-                <div id="day5" class="future"></div>
+            <section id="fiveDay" class="mt-2">
+                <h4 class="">5-Day Forecast</h4>
+
+                <article class="row justify-content-between">
+                    <div id="day1" class="future bg-primary text-white card col-2 ml-3">
+                        <div class="card-body">
+                            <h5>DATE</h5>
+                            <span>icon</span>
+                            <p>Temp: </p>
+                            <p>Humidity: </p>
+                        </div>
+                    </div>
+                    <div id="day2" class="future bg-primary text-white card col-2">
+                        <div class="card-body">
+                            <h5>DATE</h5>
+                            <span>icon</span>
+                            <p>Temp: </p>
+                            <p>Humidity: </p>
+                        </div>
+                    </div>
+                    <div id="day3" class="future bg-primary text-white card col-2">
+                        <div class="card-body">
+                            <h5>DATE</h5>
+                            <span>icon</span>
+                            <p>Temp: </p>
+                            <p>Humidity: </p>
+                        </div>
+                    </div>
+                    <div id="day4" class="future bg-primary text-white card col-2">
+                        <div class="card-body">
+                            <h5>DATE</h5>
+                            <span>icon</span>
+                            <p>Temp: </p>
+                            <p>Humidity: </p>
+                        </div>
+                    </div>
+                    <div id="day5" class="future bg-primary text-white card col-2">
+                        <div class="card-body">
+                            <h5>DATE</h5>
+                            <span>icon</span>
+                            <p>Temp: </p>
+                            <p>Humidity: </p>
+                        </div>
+                    </div>
+                </article>
             </section>
         </div>
     </main>

@@ -1,3 +1,4 @@
+var historyArr = [];
 var searchFormEl = document.querySelector("#form-input");
 var cityInputEl = document.querySelector("#searchTerm");
 var cityDisplayName = document.querySelector("#city");
@@ -9,28 +10,78 @@ var uvIndex = document.querySelector("#uv");
 var currentDate = document.querySelector("#date");
 var lat = "lat";
 var fiveDay = {
-    date: "11/05/1955",
-    icon: "elvis",
+    date: "",
+    icon: "",
     temp: "980",
     humidity: "500"
 }
 var fiveDayArr = [];
+var listItemEl = document.querySelectorAll(".list-item");
+console.log(listItemEl);
 
-console.log(fiveDay);
+
+var hxListSearch = function (index) {
+    listItemEl.forEach(function (city) {
+        console.log(city.textContent);
+        console.log(index);
+        console.log(city.id);
+
+        for (var i = 0; i < 8; i++) {
+            if (city.id == "hxItem" + index) {
+                citySearch(city.textContent);
+            }
+        }
+
+    })
+};
+
+
 
 var formSubmitHandler = function (event) {
     event.preventDefault();
 
+
     // GET VALUE FROM INPUT ELEMENT
-    var cityName = cityInputEl.value.trim();
+    var cityName = cityInputEl.value.trim().charAt(0).toUpperCase() + cityInputEl.value.slice(1);
 
     if (cityName) {
+        storeHistory(cityName);
+        getHistory();
         citySearch(cityName);
         cityInputEl.value = "";
     } else {
         alert("Please enter a city name.");
     }
 };
+
+var storeHistory = function (cityName) {
+    historyArr.unshift(cityName);
+    localStorage.setItem('Cities', historyArr);
+
+};
+
+var getHistory = function (cityName) {
+    if (localStorage.getItem('Cities') === null) {
+        return false;
+
+    } else {
+        historyArr = [];
+        historyArr.push(localStorage.getItem('Cities'));
+        newHistoryArr = historyArr[0].split(',');
+
+        for (var i = 0; i < 8; i++) {
+            var hxItemEl = document.querySelector("#hxItem" + i);
+
+            if (hxItemEl.textContent = "") {
+                // hxItemEl.parentElement.removeChild(hxItemEl);
+            } else {
+                hxItemEl.textContent = newHistoryArr[i];
+            }
+
+        }
+    }
+
+}
 
 var citySearch = function (city) {
     var apiUrl = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=imperial&appid=43fd1cdd770e5cf56daf2f9d5cdc1037";
@@ -82,6 +133,7 @@ var displayUV = function (data) {
 };
 
 var fiveDayCompiler = function (data) {
+    var fiveDayArr = [];
     for (var i = 0; i < data.list.length; i++) {
         if (data.list[i].dt_txt[11] == 1 && data.list[i].dt_txt[12] == 2) {
             var fiveDay = {
@@ -98,12 +150,11 @@ var fiveDayCompiler = function (data) {
             fiveDayArr.push(fiveDay);
         }
     }
-    console.log(fiveDayArr);
+    // console.log(fiveDayArr);
     displayFiveDay(fiveDayArr);
 };
 
 var displayFiveDay = function (data) {
-    console.log(data);
 
     for (var i = 0; i < data.length; i++) {
 
@@ -111,6 +162,10 @@ var displayFiveDay = function (data) {
         day.innerHTML = '<h4 class="card-title">' + data[i].date + '</h4><img id="icon' + i + '"class="col-10" alt="weather-conditions-icon" src="http://openweathermap.org/img/wn/' + data[i].icon + '@2x.png"></img><p>Temp: ' + data[i].temp + ' ℉</p><p>Humidity: ' + data[i].humidity + '%</p>';
 
     }
+    return
 };
 
+getHistory();
+
 searchFormEl.addEventListener("submit", formSubmitHandler);
+// listItemEl.addEventListener("click", hxlistSearch);

@@ -20,3 +20,7 @@ https://mplumer.github.io/weather-dash/
 
 ## Contribution
 ©️2020 Maxwell Plumer
+
+
+### Reference
+https://openweathermap.org/forecast5

@@ -5,58 +5,125 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
-    <!-- add the style sheet here -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/themes/base/jquery-ui.min.css">
     <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/open-iconic/1.1.1/font/css/open-iconic-bootstrap.min.css" />
     <link rel="stylesheet" href="./assets/css/style.css">
-    <title>Weather Dash</title>
+    <title>Weather Dashboard</title>
 </head>
 
-<body>
-    <header>
-        <h1 class="header text-center bg-dark text-light">Weather Dashboard</h1>
-    </header>
-    <main class="container-fluid row d-flex">
-        <div id="search-wrapper" class="col-3">
-            <label for="searchTerm">Search for a City:</label>
-            <input id="searchTerm" class="input" type="text">
-            <span><button><span class="oi oi-magnifying-glass"></span></button></span>
 
-            <section id="searchHx" class="searchHx">
-                <ul id="searchList" class="searchList">
-                    <li class="list-item border">Search history</li>
-                    <li class="list-item border">displayed here</li>
-                    <li class="list-item border"></li>
-                    <li class="list-item border"></li>
-                    <li class="list-item border"></li>
-                    <li class="list-item border"></li>
-                    <li class="list-item border"></li>
-                    <li class="list-item border"></li>
-                </ul>
-            </section>
+<header>
+    <h1 class="header text-center bg-dark text-light p-3">Weather Dashboard</h1>
+</header>
+<main class="container-fluid row d-flex m-0">
+
+    <div id="search-wrapper" class="col-12 col-md-3 p-0">
+
+        <section class="col-12 p-0">
+            <form id="form-input" class="text-left">
+                <label for="searchTerm" class="form-label col-12">Search for a City:</label>
+                <input id="searchTerm" name="searchTerm" class="input col-8" type="text" autofocus="true">
+                <button id="search-btn" type="submit" class="btn bg-primary text-white"><span
+                        class="oi oi-magnifying-glass"></span></button>
+            </form>
+        </section>
+
+        <section id="searchHx" class="p-0 col-12 w-auto
+            searchHx mt-3">
+            <ul id="searchList" class="searchList list-group">
+                <li id="hxItem0" onclick="hxListSearch(0)"
+                    class="searchTerm list-item list-group-item list-group-item-action border pt-2 pb-2"></li>
+                <li id="hxItem1" onclick="hxListSearch(1)"
+                    class="searchTerm list-item list-group-item list-group-item-action border pt-2 pb-2"></li>
+                <li id="hxItem2" onclick="hxListSearch(2)"
+                    class="searchTerm list-item list-group-item list-group-item-action border pt-2 pb-2"></li>
+                <li id="hxItem3" onclick="hxListSearch(3)"
+                    class="searchTerm list-item list-group-item list-group-item-action border pt-2 pb-2"></li>
+                <li id="hxItem4" onclick="hxListSearch(4)"
+                    class="searchTerm list-item list-group-item list-group-item-action border pt-2 pb-2"></li>
+                <li id="hxItem5" onclick="hxListSearch(5)"
+                    class="searchTerm list-item list-group-item list-group-item-action border pt-2 pb-2"></li>
+                <li id="hxItem6" onclick="hxListSearch(6)"
+                    class="searchTerm list-item list-group-item list-group-item-action border pt-2 pb-2"></li>
+                <li id="hxItem7" onclick="hxListSearch(7)"
+                    class="searchTerm list-item list-group-item list-group-item-action border pt-2 pb-2"></li>
+            </ul>
+        </section>
+
+    </div>
+
+    <section id="forecast-wrapper" class="container col-12 col-md-8 p-0 mt-3">
+        <div class="row container">
+            <div class="w-auto">
+                <h1 id="city" class="forecast-data"></h1>
+                <h3 id="date"></h3>
+            </div>
+            <span class="w-auto"><img id="icon" class=""></img></span>
         </div>
 
-        <div id="forecast-wrapper" class="col-9 border">
-            <section id="forecast" class="forecast">
-                <div id="city" class="forecast-data">City</div>
-                <div id="temp" class="forecast-data">Temperature:</div>
-                <div id="humidity" class="forecast-data">Humidity:</div>
-                <div id="wind" class="forecast-data">Wind Speed:</div>
-                <div id="uv" class="forecast-data">UV Index</div>
-            </section>
-            <section id="fiveDay">
-                <h4>5-Day Forecast</h4>
-                <div id="day1" class="future"></div>
-                <div id="day2" class="future"></div>
-                <div id="day3" class="future"></div>
-                <div id="day4" class="future"></div>
-                <div id="day5" class="future"></div>
-            </section>
+        <div class="row container mt-5">
+            <div class="data d-flex flex-column align-items-left">
+                <div id="temp" class="forecast-data pb-3"></div>
+                <div id="humidity" class="forecast-data pb-3"></div>
+                <div id="wind" class="forecast-data pb-3"></div>
+                <div id="uvEl"></div><span id="uv" class=""></span>
+            </div>
         </div>
-    </main>
 
-    <script src="./assets/js/main.js"></script>
-</body>
+    </section>
+
+    <section id="fiveDay" class="w-100 mt-2">
+        <h3 id="fiveTitle" class="invisible col-12 ml-1 pl-2">5-Day Forecast:</h3>
+
+        <article class="row col-12 container w-auto m-0">
+            <div class="row w-100">
+                <div id="day0" class="">
+                    <p class="text-center pt-2"></p>
+                    <span id="icon0" class="col-6"></span>
+                    <p></p>
+                    <p></p>
+                </div>
+
+
+                <div id="day1" class="">
+                    <p class="text-center pt-2"></p>
+                    <span id="icon1" class="col-6"></span>
+                    <p></p>
+                    <p></p>
+                </div>
+
+
+                <div id="day2" class="">
+                    <p class="text-center pt-2"></p>
+                    <span id="icon2" class="col-6"></span>
+                    <p></p>
+                    <p></p>
+                </div>
+
+
+                <div id="day3" class="">
+                    <p class="text-center pt-2"></p>
+                    <span id="icon3" class="col-6"></span>
+                    <p></p>
+                    <p></p>
+                </div>
+
+
+                <div id="day4" class="">
+                    <p class="text-center pt-2"></p>
+                    <span id="icon4" class="col-6"></span>
+                    <p></p>
+                    <p></p>
+                </div>
+            </div>
+        </article>
+    </section>
+    </div>
+</main>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script src="./assets/js/main.js"></script>
+
 
 </html>

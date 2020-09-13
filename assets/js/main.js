@@ -10,9 +10,9 @@ var uvIndex = document.querySelector("#uv");
 var currentDate = document.querySelector("#date");
 var lat = "lat";
 var fiveDay = {
-    date: "11/05/1955",
-    icon: "elvis",
-    temp: "980",
+    date: "05/24/1993",
+    icon: "max",
+    temp: "800",
     humidity: "500"
 }
 var fiveDayArr = [];
@@ -41,8 +41,8 @@ var formSubmitHandler = function (event) {
 
     if (cityName) {
         citySearch(cityName);
-        storeHistory(cityName);
-        getHistory();
+        // storeHistory(cityName);
+        // getHistory();
         // citySearch(cityName);
         cityInputEl.value = "";
     } else {
@@ -52,10 +52,25 @@ var formSubmitHandler = function (event) {
 
 // SAVE SEARCH TERM IN LOCAL STORAGE
 var storeHistory = function (cityName) {
-    historyArr.unshift(cityName);
-    localStorage.setItem('Cities', historyArr);
+    if (localStorage.getItem('Cities') === null) {
+        historyArr.unshift(cityName);
+        localStorage.setItem('Cities', historyArr);
+        return false;
 
+    } else {
+        historyArr = [];
+        historyArr.push(localStorage.getItem('Cities'));
+        newHistoryArr = historyArr[0].split(',');
+        if (newHistoryArr.includes(cityName)) {
+            return false;
+        } else {
+            historyArr.unshift(cityName);
+            localStorage.setItem('Cities', historyArr);
+        }
+    }
 };
+
+
 
 // RETRIEVE SEARCH HISTORY FROM LOCAL STORAGE
 var getHistory = function (cityName) {
@@ -87,6 +102,8 @@ var citySearch = function (city) {
 
     fetch(apiUrl).then(function (response) {
         if (response.ok) {
+            storeHistory(city);
+            getHistory();
             response.json().then(function (data) {
                 displayWeather(data, city);
 
@@ -100,7 +117,7 @@ var citySearch = function (city) {
 
             })
         } else {
-            alert("City not found. Try again!");
+            alert("City not found. Please check spelling and try again!");
             return false;
         }
 

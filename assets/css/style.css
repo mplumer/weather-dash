@@ -1,21 +1,25 @@
-html {
+* {
+    box-sizing: border-box;
+  }
+
+  body {
+    /* background-color: var(--primary); */
+    margin: 0;
+    padding: 0;
+    font-family: "IBM Plex Sans", sans-serif;
+    /* color: var(--dark); */
+    line-height: 1.5;
     font-size: 1rem;
   }
-
-  @include media-breakpoint-up(sm) {
-    html {
-      font-size: 1.2rem;
-    }
+  
+  p {
+    font-size: 0.8rem;
   }
 
-  @include media-breakpoint-up(md) {
-    html {
-      font-size: 1.4rem;
-    }
+  .future {
+    font-size: 0.7rem;
   }
 
-  @include media-breakpoint-up(lg) {
-    html {
-      font-size: 1.6rem;
-    }
-  } 
+  .list-group-item:hover, .btn:hover {
+      background-color: lightskyblue;
+  }

@@ -10,8 +10,8 @@ var uvIndex = document.querySelector("#uv");
 var currentDate = document.querySelector("#date");
 var lat = "lat";
 var fiveDay = {
-    date: "",
-    icon: "",
+    date: "11/05/1955",
+    icon: "elvis",
     temp: "980",
     humidity: "500"
 }
@@ -68,16 +68,15 @@ var getHistory = function (cityName) {
 
         for (var i = 0; i < 8; i++) {
             var hxItemEl = document.querySelector("#hxItem" + i);
+            hxItemEl.textContent = newHistoryArr[i];
 
-            if (hxItemEl.textContent = "") {
-                // hxItemEl.parentElement.removeChild(hxItemEl);
+            if (hxItemEl.textContent === "" || hxItemEl.textContent === null) {
+                hxItemEl.setAttribute("class", "searchTerm invisible list-item list-group-item list-group-item-action border pt-2 pb-2");
             } else {
-                hxItemEl.textContent = newHistoryArr[i];
+                hxItemEl.setAttribute("class", "searchTerm list-item list-group-item list-group-item-action border pt-2 pb-2");
             }
-
         }
     }
-
 }
 
 // SEARCH API FOR CURRENT AND FIVE-DAY WEATHER DATA
@@ -168,7 +167,7 @@ var displayFiveDay = function (data) {
     for (var i = 0; i < data.length; i++) {
 
         var day = document.getElementById("day" + i);
-        day.innerHTML = '<h6 class="card-title">' + data[i].date + '</h6><img id="icon' + i + '"class="col-10" src="https://openweathermap.org/img/wn/' + data[i].icon + '@2x.png"></img><p>Temp: ' + data[i].temp + ' ℉</p><p>Humidity: ' + data[i].humidity + '%</p>';
+        day.innerHTML = '<p class="h6 card-title">' + data[i].date + '</p><img id="icon' + i + '"class="col-10" src="https://openweathermap.org/img/wn/' + data[i].icon + '@2x.png"></img><p>Temp: ' + data[i].temp + ' ℉</p><p>Humidity: ' + data[i].humidity + '%</p>';
 
     }
     return

@@ -5,114 +5,119 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
-    <!-- add the style sheet here -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/themes/base/jquery-ui.min.css">
     <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/open-iconic/1.1.1/font/css/open-iconic-bootstrap.min.css" />
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="./assets/css/style.css">
     <title>Weather Dashboard</title>
 </head>
 
-<body>
+
     <header>
         <h1 class="header text-center bg-dark text-light p-3">Weather Dashboard</h1>
     </header>
-    <main class="container-fluid row d-flex">
+    <main class="container-fluid row d-flex m-0">
 
-        <div id="search-wrapper" class="col col-lg-3">
+        <div id="search-wrapper" class="col-12 col-md-3 p-0">
 
-            <section class="card">
-                <form id="form-input" class="card-body pl-0 pr-0 text-center">
-                    <label for="searchTerm" class="h4 form-label">Search for a City:</label>
-                    <input id="searchTerm" name="searchTerm" class="input" type="text" autofocus="true">
+            <section class="col-12 p-0">
+                <form id="form-input" class="text-left">
+                    <label for="searchTerm" class="form-label col-12">Search for a City:</label>
+                    <input id="searchTerm" name="searchTerm" class="input col-8" type="text" autofocus="true">
                     <button id="search-btn" type="submit" class="btn bg-primary text-white"><span
                             class="oi oi-magnifying-glass"></span></button>
                 </form>
             </section>
 
-            <section id="searchHx" class="card searchHx mt-3">
+            <section id="searchHx" class="p-0 col-12 w-auto
+            searchHx mt-3">
                 <ul id="searchList" class="searchList list-group">
-                    <li id="hxItem0" onclick="hxListSearch(0)" class="searchTerm list-item list-group-item list-group-item-action border p-3"></li>
-                    <li id="hxItem1" onclick="hxListSearch(1)" class="searchTerm list-item list-group-item list-group-item-action border p-3"></li>
-                    <li id="hxItem2" onclick="hxListSearch(2)" class="searchTerm list-item list-group-item list-group-item-action border p-3"></li>
-                    <li id="hxItem3" onclick="hxListSearch(3)" class="searchTerm list-item list-group-item list-group-item-action border p-3"></li>
-                    <li id="hxItem4" onclick="hxListSearch(4)" class="searchTerm list-item list-group-item list-group-item-action border p-3"></li>
-                    <li id="hxItem5" onclick="hxListSearch(5)" class="searchTerm list-item list-group-item list-group-item-action border p-3"></li>
-                    <li id="hxItem6" onclick="hxListSearch(6)" class="searchTerm list-item list-group-item list-group-item-action border p-3"></li>
-                    <li id="hxItem7" onclick="hxListSearch(7)" class="searchTerm list-item list-group-item list-group-item-action border p-3"></li>
+                    <li id="hxItem0" onclick="hxListSearch(0)"
+                        class="searchTerm list-item list-group-item list-group-item-action border pt-2 pb-2"></li>
+                    <li id="hxItem1" onclick="hxListSearch(1)"
+                        class="searchTerm list-item list-group-item list-group-item-action border pt-2 pb-2"></li>
+                    <li id="hxItem2" onclick="hxListSearch(2)"
+                        class="searchTerm list-item list-group-item list-group-item-action border pt-2 pb-2"></li>
+                    <li id="hxItem3" onclick="hxListSearch(3)"
+                        class="searchTerm list-item list-group-item list-group-item-action border pt-2 pb-2"></li>
+                    <li id="hxItem4" onclick="hxListSearch(4)"
+                        class="searchTerm list-item list-group-item list-group-item-action border pt-2 pb-2"></li>
+                    <li id="hxItem5" onclick="hxListSearch(5)"
+                        class="searchTerm list-item list-group-item list-group-item-action border pt-2 pb-2"></li>
+                    <li id="hxItem6" onclick="hxListSearch(6)"
+                        class="searchTerm list-item list-group-item list-group-item-action border pt-2 pb-2"></li>
+                    <li id="hxItem7" onclick="hxListSearch(7)"
+                        class="searchTerm list-item list-group-item list-group-item-action border pt-2 pb-2"></li>
                 </ul>
             </section>
 
         </div>
 
-        <div id="forecast-wrapper" class="col col-lg-9">
+        <div id="forecast-wrapper" class="col-12 col-md-9 p-0">
 
-            <div class="row">
-                <div class="col-12">
-                    <section id="forecast" class="forecast card">
-                        <article class="row">
-                            <div class="col-6 card-body">
-
-                                <h1 id="city" class="card-title forecast-data"></h1>
-                                <h4 id="date" class="card-subtitle"></h4>
+            <section class="row col-12 border ml-1">
+                <div class="col-12 pr-0">
+                    <section id="forecast" class="forecast">
+                        <article class="row no-gutters">
+                            <div class="col-6 col-xs-12 >
+                                <h1 id="city" class=" forecast-data"></h1>
+                                <h4 id="date" class="-subtitle"></h4>
                                 <br>
                                 <div class="data d-flex flex-column align-items-left">
                                     <div id="temp" class="forecast-data pb-3"></div>
                                     <div id="humidity" class="forecast-data pb-3"></div>
                                     <div id="wind" class="forecast-data pb-3"></div>
-                                   <div id="uv" class=""></div>
+                                    <div id="uv" class=""></div>
                                 </div>
 
                             </div>
-                            <div class="col-6"><img id="icon" class="col-12" alt="weather-conditions-icon"></img></div>
+                            <div class="col-6"><img id="icon" class="col-12 col-md-6"></img></div>
 
                         </article>
 
                     </section>
                 </div>
-            </div>
+            </section>
 
-            <section id="fiveDay" class="mt-2">
-                <h3 class="">5-Day Forecast:</h3>
+            <section id="fiveDay" class="mt-2 ml-1 border">
+                <h3 class="col-12 ml-1 pl-2">5-Day Forecast:</h3>
 
-                <article class="row justify-content-between container-fluid">
-                    <div class="future bg-primary text-white card col-lg m-1">
-                        <div id="day0" class="card-body pl-0 pr-0 text-center">
-                            <h5 class="card-title">DATE</h5>
-                            <span id="icon0" class="card-text">icon</span>
+                <article class="row col-12 justify-content-between container w-100 ml-1 mr-0 p-0">
+                    <div class="future bg-primary rounded text-white col-md m-1">
+                        <div id="day0" class="pl-0 pr-0 text-left">
+                            <p class="pt-2">DATE</p>
+                            <span id="icon0" class="col-6"></span>
                             <p>Temp: </p>
                             <p>Humidity: </p>
                         </div>
                     </div>
-                    <div class="future bg-primary text-white card col-lg m-1">
-                        <div id="day1" class="card-body pl-0 pr-0 text-center">
-                            <h5 class="card-title">DATE</h5>
-                            <span id="icon1" class="card-text">icon</span>
+                    <div class="future bg-primary rounded text-white  col-md m-1">
+                        <div id="day1" class="pl-0 pr-0 text-left">
+                            <p class="pt-2">DATE</p>
+                            <span id="icon1" class="col-6"></span>
                             <p>Temp: </p>
                             <p>Humidity: </p>
                         </div>
                     </div>
-                    <div class="future bg-primary text-white card col-lg m-1">
-                        <div id="day2" class="card-body pl-0 pr-0 text-center">
-                            <h5 class="card-title">DATE</h5>
-                            <span id="icon2" class="card-text">icon</span>
+                    <div class="future bg-primary rounded text-white  col-md m-1">
+                        <div id="day2" class="pl-0 pr-0 text-left">
+                            <p class="pt-2">DATE</p>
+                            <span id="icon2" class="col-6"></span>
                             <p>Temp: </p>
                             <p>Humidity: </p>
                         </div>
                     </div>
-                    <div class="future bg-primary text-white card col-lg m-1">
-                        <div id="day3" class="card-body pl-0 pr-0 text-center">
-                            <h5 class="card-title">DATE</h5>
-                            <span id="icon3" class="card-text">icon</span>
+                    <div class="future bg-primary rounded text-white  col-md m-1">
+                        <div id="day3" class="pl-0 pr-0 text-left">
+                            <p class="pt-2">DATE</p>
+                            <span id="icon3" class="col-6"></span>
                             <p>Temp: </p>
                             <p>Humidity: </p>
                         </div>
                     </div>
-                    <div class="future bg-primary text-white card col-lg m-1">
-                        <div id="day4" class="card-body pl-0 pr-0 text-center">
-                            <h5 class="card-title">DATE</h5>
-                            <span id="icon4" class="card-text">icon</span>
+                    <div class="future bg-primary rounded text-white  col-md m-1">
+                        <div id="day4" class="pl-0 pr-0 text-left">
+                            <p class="pt-2">DATE</p>
+                            <span id="icon4" class="col-6"></span>
                             <p>Temp: </p>
                             <p>Humidity: </p>
                         </div>
@@ -123,15 +128,8 @@
     </main>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js">
-    </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.15.0/umd/popper.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/moment.min.js"
-        integrity="sha512-rmZcZsyhe0/MAjquhTgiUcb4d9knaFc7b5xAfju483gbEXTkeJRUMIPk6s3ySZMYUHEcjKbjLjyddGWMrNEvZg=="
-        crossorigin="anonymous"></script>
     <script src="./assets/js/main.js"></script>
-</body>
+
 
 </html>

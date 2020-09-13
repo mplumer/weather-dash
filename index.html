@@ -52,78 +52,72 @@
 
     </div>
 
-    <div id="forecast-wrapper" class="col-12 col-md-9 p-0">
-
-        <section class="row col-12">
-            <div class="col-12 pr-0">
-                <section id="forecast" class="forecast">
-                    <article class="row no-gutters">
-                        <div class="col-6">
-                            <h1 id="city" class="forecast-data"></h1>
-                            <h4 id="date" class="subtitle"></h4>
-                            <br>
-                            <div class="data d-flex flex-column align-items-left">
-                                <div id="temp" class="forecast-data pb-3"></div>
-                                <div id="humidity" class="forecast-data pb-3"></div>
-                                <div id="wind" class="forecast-data pb-3"></div>
-                                <div id="uv" class=""></div>
-                            </div>
-
-                        </div>
-                        <div class="col-6"><img id="icon" class="col-12 col-md-6"></img></div>
-
-                    </article>
-
-                </section>
+    <section id="forecast-wrapper" class="container col-12 col-md-8 p-0 mt-3">
+        <div class="row container">
+            <div class="w-auto">
+                <h1 id="city" class="forecast-data"></h1>
+                <h3 id="date"></h3>
             </div>
-        </section>
+            <span class="w-auto"><img id="icon" class=""></img></span>
+        </div>
 
-        <section id="fiveDay" class="mt-2">
-            <h3 class="col-12 ml-1 pl-2">5-Day Forecast:</h3>
+        <div class="row container mt-5">
+            <div class="data d-flex flex-column align-items-left">
+                <div id="temp" class="forecast-data pb-3"></div>
+                <div id="humidity" class="forecast-data pb-3"></div>
+                <div id="wind" class="forecast-data pb-3"></div>
+                <div id="uvEl"></div><span id="uv" class=""></span>
+            </div>
+        </div>
 
-            <article class="row col-12 justify-content-between container w-100 ml-1 mr-0 p-0">
-                <div class="future bg-primary rounded text-white col-md m-1">
-                    <div id="day0" class="pl-0 pr-0 text-left">
-                        <p class="text-center pt-2">DATE</p>
-                        <span id="icon0" class="col-6"></span>
-                        <p>Temp: </p>
-                        <p>Humidity: </p>
-                    </div>
+    </section>
+
+    <section id="fiveDay" class="w-100 mt-2">
+        <h3 id="fiveTitle" class="invisible col-12 ml-1 pl-2">5-Day Forecast:</h3>
+
+        <article class="row col-12 container w-auto m-0">
+            <div class="row w-100">
+                <div id="day0" class="">
+                    <p class="text-center pt-2"></p>
+                    <span id="icon0" class="col-6"></span>
+                    <p></p>
+                    <p></p>
                 </div>
-                <div class="future bg-primary rounded text-white  col-md m-1">
-                    <div id="day1" class="pl-0 pr-0 text-left">
-                        <p class="text-center pt-2">DATE</p>
-                        <span id="icon1" class="col-6"></span>
-                        <p>Temp: </p>
-                        <p>Humidity: </p>
-                    </div>
+
+
+                <div id="day1" class="">
+                    <p class="text-center pt-2"></p>
+                    <span id="icon1" class="col-6"></span>
+                    <p></p>
+                    <p></p>
                 </div>
-                <div class="future bg-primary rounded text-white  col-md m-1">
-                    <div id="day2" class="pl-0 pr-0 text-left">
-                        <p class="text-center pt-2">DATE</p>
-                        <span id="icon2" class="col-6"></span>
-                        <p>Temp: </p>
-                        <p>Humidity: </p>
-                    </div>
+
+
+                <div id="day2" class="">
+                    <p class="text-center pt-2"></p>
+                    <span id="icon2" class="col-6"></span>
+                    <p></p>
+                    <p></p>
                 </div>
-                <div class="future bg-primary rounded text-white  col-md m-1">
-                    <div id="day3" class="pl-0 pr-0 text-left">
-                        <p class="text-center pt-2">DATE</p>
-                        <span id="icon3" class="col-6"></span>
-                        <p>Temp: </p>
-                        <p>Humidity: </p>
-                    </div>
+
+
+                <div id="day3" class="">
+                    <p class="text-center pt-2"></p>
+                    <span id="icon3" class="col-6"></span>
+                    <p></p>
+                    <p></p>
                 </div>
-                <div class="future bg-primary rounded text-white  col-md m-1">
-                    <div id="day4" class="pl-0 pr-0 text-left">
-                        <p class="text-center pt-2">DATE</p>
-                        <span id="icon4" class="col-6"></span>
-                        <p>Temp: </p>
-                        <p>Humidity: </p>
-                    </div>
+
+
+                <div id="day4" class="">
+                    <p class="text-center pt-2"></p>
+                    <span id="icon4" class="col-6"></span>
+                    <p></p>
+                    <p></p>
                 </div>
-            </article>
-        </section>
+            </div>
+        </article>
+    </section>
     </div>
 </main>
 

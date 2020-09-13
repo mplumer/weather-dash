@@ -1,19 +1,18 @@
 # Weather Dashboard
 
 ## Purpose
-A web application that provides up-to-date, current weather information as well as a 5-day forecast. Searchable by city, the UI provides informative icons and a clickable search history menu of up to 8 previously searched cities. 
+A web application that allows users to search by city name and retrieve current weather information along with a 5-day weather forecast. Forecasts include weather data along with a color coded UV index and icons representing the weather conditions. 
 
 ## Built With
 * HTML
 * CSS
-* Bootstrap
 * JavaScript
+* Bootstrap
 * jQuery
-* Open-Iconic API
 * OpenWeather API
 
 
-![Screenshot](assets/images/screenshot.png)
+![Screenshot](assets/images/screenshot.jpg)
 
 ## Website
 https://mplumer.github.io/weather-dash/

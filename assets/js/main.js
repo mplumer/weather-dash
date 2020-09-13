@@ -12,8 +12,8 @@ var lat = "lat";
 var fiveDay = {
     date: "05/24/1993",
     icon: "max",
-    temp: "800",
-    humidity: "500"
+    temp: "880",
+    humidity: "550"
 }
 var fiveDayArr = [];
 var listItemEl = document.querySelectorAll(".list-item");
@@ -70,8 +70,6 @@ var storeHistory = function (cityName) {
     }
 };
 
-
-
 // RETRIEVE SEARCH HISTORY FROM LOCAL STORAGE
 var getHistory = function (cityName) {
     if (localStorage.getItem('Cities') === null) {
@@ -117,7 +115,7 @@ var citySearch = function (city) {
 
             })
         } else {
-            alert("City not found. Please check spelling and try again!");
+            alert("City not found. Try again!");
             return false;
         }
 
@@ -143,10 +141,11 @@ var displayWeather = function (data, city) {
     var dateToday = dateObject.toLocaleDateString('en-US');
     currentDate.textContent = dateToday
 
+    // Get UV Index 
     var lat = data.coord.lat
     var lon = data.coord.lon
     var uvUrl = "https://api.openweathermap.org/data/2.5/uvi?lat=" + lat + "&lon=" + lon + "&appid=c888bc87519e878c5cbb608278ea9713";
-    uvIndex.textContent = "UV Index: " + lat + lon;
+
 
     fetch(uvUrl).then(function (response) {
         response.json().then(function (data) {
@@ -157,18 +156,20 @@ var displayWeather = function (data, city) {
 
 // DISPLAY COLOR-CODED UV-INDEX
 var displayUV = function (data) {
-    uvIndex.textContent = "UV Index: " + data.value
+    var uvRound = Math.round(data.value);
+    uvIndex.textContent = "UV Index: " + uvRound;
     if (data.value < 3) {
-        uvIndex.setAttribute("class", 'forecast-data bg-success text-white rounded w-50 text-center');
+        uvIndex.setAttribute("class", 'forecast-data bg-success text-white rounded text-center');
     } else if (data.value >= 3 && data.value < 8) {
-        uvIndex.setAttribute("class", 'forecast-data bg-warning text-white rounded w-50 text-center');
+        uvIndex.setAttribute("class", 'forecast-data bg-warning text-white rounded text-center');
     } else {
-        uvIndex.setAttribute("class", 'forecast-data bg-danger text-white rounded w-50 text-center');
+        uvIndex.setAttribute("class", 'forecast-data bg-danger text-white rounded text-center');
     }
 };
 
 // COMPILE 5-DAY DATA INTO OBJECTS
 var fiveDayCompiler = function (data) {
+    console.log(data);
     var fiveDayArr = [];
     for (var i = 0; i < data.list.length; i++) {
         if (data.list[i].dt_txt[11] == 1 && data.list[i].dt_txt[12] == 2) {
@@ -178,13 +179,15 @@ var fiveDayCompiler = function (data) {
                 temp: data.list[i].main.temp,
                 humidity: data.list[i].main.humidity
             }
+            console.log(fiveDay);
             // Round temperature to nearest integer
             var roundTemp = Math.round(data.list[i].main.temp);
             fiveDay.temp = roundTemp;
             // Convert UTC code to current date
             var milliseconds = data.list[i].dt * 1000;
             var dateObject = new Date(milliseconds);
-            var newDate = dateObject.toLocaleDateString('en-US');
+            var options = { month: 'numeric', day: 'numeric' };
+            var newDate = dateObject.toLocaleDateString('en-US', options);
             fiveDay.date = newDate;
             fiveDayArr.push(fiveDay);
         }
@@ -195,11 +198,13 @@ var fiveDayCompiler = function (data) {
 
 // DISPLAY 5-DAY FORECAST DATA
 var displayFiveDay = function (data) {
-
+    var fiveTitle = document.getElementById("fiveTitle");
+    fiveTitle.setAttribute("class", "col-12 ml-1 pl-2");
     for (var i = 0; i < data.length; i++) {
 
         var day = document.getElementById("day" + i);
-        day.innerHTML = '<p class="text-center pt-3">' + data[i].date + '</p><img id="icon' + i + '"class="col-8" src="https://openweathermap.org/img/wn/' + data[i].icon + '@2x.png"></img><p>Temp: ' + data[i].temp + '℉</p><p>Humidity: ' + data[i].humidity + '%</p>';
+        day.setAttribute('class', 'future bg-primary rounded text-white col-md m-1 w-100');
+        day.innerHTML = '<p class="h4 text-center pt-3">' + data[i].date + '</p><img id="icon' + i + '"class="w-100" src="https://openweathermap.org/img/wn/' + data[i].icon + '@2x.png"></img><p>Temp: ' + data[i].temp + '℉</p><p>Humidity: ' + data[i].humidity + '%</p>';
 
     }
     return

@@ -66,6 +66,7 @@ var getHistory = function (cityName) {
         historyArr.push(localStorage.getItem('Cities'));
         newHistoryArr = historyArr[0].split(',');
 
+
         for (var i = 0; i < 8; i++) {
             var hxItemEl = document.querySelector("#hxItem" + i);
             hxItemEl.textContent = newHistoryArr[i];
@@ -102,11 +103,14 @@ var citySearch = function (city) {
 // DISPLAY CURRENT WEATHER DATA ON PAGE
 var displayWeather = function (data, city) {
     cityDisplayName.textContent = city;
+    var tempRound = Math.round(data.main.temp);
+    var windRound = Math.round(data.wind.speed);
     // GET ICON
     iconEl.setAttribute("src", "https://openweathermap.org/img/wn/" + data.weather[0].icon + "@2x.png");
-    temp.textContent = "Temperature: " + data.main.temp + " ℉";
+
+    temp.textContent = "Temperature: " + tempRound + "℉";
     humidity.textContent = "Humidity: " + data.main.humidity + "%";
-    windSpeed.textContent = "Wind Speed: " + data.wind.speed + " mph";
+    windSpeed.textContent = "Wind Speed: " + windRound + "mph";
 
     // Convert UTC code to current date
     var milliseconds = data.dt * 1000;
@@ -149,6 +153,9 @@ var fiveDayCompiler = function (data) {
                 temp: data.list[i].main.temp,
                 humidity: data.list[i].main.humidity
             }
+            // Round temperature to nearest integer
+            var roundTemp = Math.round(data.list[i].main.temp);
+            fiveDay.temp = roundTemp;
             // Convert UTC code to current date
             var milliseconds = data.list[i].dt * 1000;
             var dateObject = new Date(milliseconds);
@@ -167,7 +174,7 @@ var displayFiveDay = function (data) {
     for (var i = 0; i < data.length; i++) {
 
         var day = document.getElementById("day" + i);
-        day.innerHTML = '<p class="h6 card-title">' + data[i].date + '</p><img id="icon' + i + '"class="col-10" src="https://openweathermap.org/img/wn/' + data[i].icon + '@2x.png"></img><p>Temp: ' + data[i].temp + ' ℉</p><p>Humidity: ' + data[i].humidity + '%</p>';
+        day.innerHTML = '<p class="text-center pt-3">' + data[i].date + '</p><img id="icon' + i + '"class="col-8" src="https://openweathermap.org/img/wn/' + data[i].icon + '@2x.png"></img><p>Temp: ' + data[i].temp + '℉</p><p>Humidity: ' + data[i].humidity + '%</p>';
 
     }
     return
